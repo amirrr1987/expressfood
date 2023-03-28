@@ -38,7 +38,6 @@ const restaurantSchema = new mongoose.Schema({
     required: true
   },
   descriptaion:{
-    
     type: String,
     required: true
   },
