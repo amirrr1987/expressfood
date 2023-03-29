@@ -42,10 +42,6 @@ const restaurantSchema = new mongoose.Schema({
     required: true
   },
   score:{
-    type: String,
-    required: true
-  },
-  score:{
     type: Number,
     default: 0
   },
@@ -56,7 +52,7 @@ const restaurantSchema = new mongoose.Schema({
     type: String
   },
   comments:[commentSchema],
-  menu: [foodSchema]
+  menus: [foodSchema]
 })
 
 module.exports =  mongoose.model("restaurant",restaurantSchema)

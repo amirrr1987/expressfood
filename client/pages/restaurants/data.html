@@ -36,7 +36,7 @@
     <link rel="stylesheet" href="../../dist/css/custom-style.css" />
   </head>
 
-  <body class="hold-transition sidebar-mini">
+  <body class="hold-transition sidebar-mini" onload="getList()">
     <div class="wrapper">
       <!-- Navbar -->
       <nav
@@ -87,7 +87,7 @@
                 <!-- Message Start -->
                 <div class="media">
                   <img
-                    src="dist/img/user1-128x128.jpg"
+                    src="../../dist/img/user1-128x128.jpg"
                     alt="User Avatar"
                     class="img-size-50 ml-3 img-circle"
                   />
@@ -111,7 +111,7 @@
                 <!-- Message Start -->
                 <div class="media">
                   <img
-                    src="dist/img/user8-128x128.jpg"
+                    src="../../dist/img/user8-128x128.jpg"
                     alt="User Avatar"
                     class="img-size-50 img-circle ml-3"
                   />
@@ -135,7 +135,7 @@
                 <!-- Message Start -->
                 <div class="media">
                   <img
-                    src="dist/img/user3-128x128.jpg"
+                    src="../../dist/img/user3-128x128.jpg"
                     alt="User Avatar"
                     class="img-size-50 img-circle ml-3"
                   />
@@ -865,6 +865,20 @@
           autoWidth: false,
         });
       });
+    </script>
+    <script>
+      const getList = async () => {
+        // console.log("sdfsdf");
+        
+        try {
+          
+          const response = await fetch('http://localhost:5000/api/restaurant');
+          // const data = await fetch("GET", "http://localhost:5000/api/restaurant");
+          response = await response.json();
+          console.log(response);
+        } catch (error) {}
+      };
+   
     </script>
   </body>
 </html>

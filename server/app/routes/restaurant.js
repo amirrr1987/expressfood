@@ -5,8 +5,8 @@ const restaurantController = require("../controllers/restaurant")
 router.get("/", restaurantController.getList)
 router.get("/:id", restaurantController.getOne)
 router.post("/", restaurantController.create)
-router.put("/", restaurantController.update)
-router.delete("/", restaurantController.delete)
+router.put("/:id", restaurantController.update)
+router.delete("/:id", restaurantController.delete)
 
 
 module.exports = router

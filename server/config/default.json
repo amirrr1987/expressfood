@@ -1,0 +1,7 @@
+{
+  "dbAddress": "mongodb://127.0.0.1:27017/restaurant",
+  "myTokenSecretKey": "ArazSamaAmir",
+  "salt":  10,
+  "headerTokenName": "Authorization",
+  "serverPort": 5000
+}

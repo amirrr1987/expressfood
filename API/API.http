@@ -1,0 +1,74 @@
+# GET http://localhost:5000/api/restaurant/234324 HTTP/1.1
+# content-type: application/json
+
+# GET http://localhost:5000/api/restaurant/6423f7f5c550628f5200f77e HTTP/1.1
+# content-type: application/json
+
+POST http://localhost:5000/api/restaurant HTTP/1.1
+content-type: application/json
+
+{
+    "name": "Amirssssssss Maghami",
+    "descriptaion": "09198881400",
+    "address": "09198881400",
+    "message": "09198881400",
+    "pic": "09198881400",
+    "comments": [{
+      "user": "asd",
+      "text": "asd",
+      "score": 3
+    }],
+    "menus": [
+      {
+        
+    "name": "Amir Maghami",
+    "descriptaion": "09198881400",
+      "price": 3,
+    "pic": "09198881400",
+    "comments": [
+      {
+      "user": "asd",
+      "text": "asd",
+      "score": 3
+    }
+    ]
+      }
+    ]
+}
+
+
+# PUT http://localhost:5000/api/restaurant/6423e2755b8bde6ea09cc4cc HTTP/1.1
+# content-type: application/json
+
+# {
+#     "name": "faaaaaaaaaaaaaaaaaaaamaa afaaaaaaaaMaghami",
+#     "descriptaion": "09198881400",
+#     "address": "09198881400",
+#     "message": "09198881400",
+#     "pic": "09198881400",
+#     "comments": [{
+#       "user": "asd",
+#       "text": "asd",
+#       "score": 334444444444444
+#     }],
+#     "menus": [
+#       {
+        
+#     "name": "Amir Maghami",
+#     "descriptaion": "09198881400",
+#       "price": 3453453453453453,
+#     "pic": "09198881400",
+#     "comments": [
+#       {
+#       "user": "asd",
+#       "text": "asd",
+#       "score": 34534534534
+#     }
+#     ]
+#       }
+#     ]
+# }
+
+
+# DELETE http://localhost:5000/api/restaurant/6423e2755b8bde6ea09cc4cc HTTP/1.1
+# content-type: application/json
