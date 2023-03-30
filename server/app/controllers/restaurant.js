@@ -3,7 +3,8 @@ const RestaurantValidator = require("../validators/restaurant")
 // const _ = require("loadash")
 class Restaurant {
   async getList(req, res) {
-    const list = await RestaurantModel.find().select("name description score").limit(20)
+    // const list = await RestaurantModel.find().select("name description score").limit(20)
+    const list = await RestaurantModel.find().limit(20)
     res.send({ list })
   }
   async getOne(req, res) {
@@ -18,8 +19,9 @@ class Restaurant {
     const { error } = await RestaurantValidator.HandelRestaurantCreate({ data: body })
     if (error) return res.status(400).send({ message: error })
     let restaurant = new RestaurantModel(body)
-    restaurant = await restaurant.save()
-    res.send(restaurant)  
+    await restaurant.save()
+    console.log(restaurant);
+    // res.send(restaurant)  
   }
   async update(req, res) {
     const { body, params } = req;
