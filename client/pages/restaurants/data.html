@@ -693,6 +693,7 @@
       const tb = document.querySelector("tbody")
 
       const getTableData = async ()=>{
+        console.log("sdf");
         try {
           const {data} = await axios.get("http://localhost:5000/api/restaurant")
           tb.innerHTML = data.list
