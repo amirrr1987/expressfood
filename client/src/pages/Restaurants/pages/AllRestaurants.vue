@@ -1,12 +1,13 @@
 <template>
   <q-page class="q-pa-xl">
-    {{ restaurants }}
     <q-table
       title="props.label"
-      :rows="restaurants"
+      :rows="restaurantStore.state.restaurants"
       :columns="columns"
       row-key="name"
-    />
+    >
+  
+  </q-table>
 
     <q-ajax-bar
       ref="bar"
@@ -19,14 +20,14 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, reactive } from 'vue';
-import { api } from '../../../boot/axios';
-const restaurants = reactive<any>([]);
-onMounted(async () => {
-  const { data } = await api.get('/restaurant');
-  console.log(data.list);
+import { onMounted } from 'vue';
 
-  Object.assign(restaurants, data.list);
+import { useRestaurantStore } from 'src/stores/RestaurantStore';
+
+const restaurantStore = useRestaurantStore();
+
+onMounted(async () => {
+  await restaurantStore.getRestaurants();
 });
 
 const columns = [

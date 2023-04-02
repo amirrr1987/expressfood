@@ -1,7 +1,7 @@
 <template>
   <q-page class="q-pa-xl">
-    <q-form @submit="submitForm">
-      <q-input outlined v-model="newRestaurant.name" label="Name" />
+    <q-form @submit="restaurantStore.createRestaurants">
+      <q-input outlined v-model="restaurantStore.state.restaurant.name" label="Name" />
       <q-input
         outlined
         v-model="newRestaurant.description"
@@ -15,8 +15,10 @@
 
 <script setup lang="ts">
 import { api } from 'src/boot/axios';
+import { useRestaurantStore } from 'src/stores/RestaurantStore';
 import { reactive, ref } from 'vue';
 
+const restaurantStore = useRestaurantStore();
 const newRestaurant = reactive({
   name: '',
   description: '',
@@ -25,12 +27,5 @@ const newRestaurant = reactive({
   comments: [],
   menus: [],
 });
-const submitForm = async () => {
-  try {
-    const data = await api.post('/restaurant', newRestaurant);
-    console.log(data);
-  } catch (error) {
-    console.log(error);
-  }
-};
+
 </script>

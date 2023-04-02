@@ -13,93 +13,7 @@
       </q-toolbar>
     </q-header>
 
-    <q-drawer
-      v-model="drawer"
-      show-if-above
-      :width="200"
-      :breakpoint="500"
-      bordered
-      :class="$q.dark.isActive ? 'bg-grey-9' : 'bg-grey-3'"
-    >
-      <q-scroll-area class="fit">
-        <q-list bordered>
-          <q-item clickable v-ripple>
-            <q-item-section avatar>
-              <q-icon color="primary" name="home" />
-            </q-item-section>
-            <q-item-section>Dashboard</q-item-section>
-          </q-item>
-
-          <q-separator spaced />
-
-          <q-item clickable v-ripple>
-            <q-item-section avatar>
-              <q-icon color="primary" name="group" />
-            </q-item-section>
-            <q-item-section>Users</q-item-section>
-          </q-item>
-          <q-list>
-            <router-link to="/users/new" class="menu-link">
-              <q-item clickable v-ripple>
-                <q-item-section avatar> </q-item-section>
-                <q-item-section ne>New user</q-item-section>
-              </q-item>
-            </router-link>
-            <router-link to="/users" class="menu-link">
-              <q-item clickable v-ripple>
-                <q-item-section avatar> </q-item-section>
-                <q-item-section>All Users</q-item-section>
-              </q-item>
-            </router-link>
-          </q-list>
-
-          <q-separator spaced />
-          <q-item clickable v-ripple>
-            <q-item-section avatar>
-              <q-icon color="primary" name="list" />
-            </q-item-section>
-            <q-item-section>Orders</q-item-section>
-          </q-item>
-          <q-list>
-            <router-link to="/orders/new" class="menu-link">
-              <q-item clickable v-ripple>
-                <q-item-section avatar> </q-item-section>
-                <q-item-section ne>New order</q-item-section>
-              </q-item>
-            </router-link>
-            <router-link to="/orders" class="menu-link">
-              <q-item clickable v-ripple>
-                <q-item-section avatar> </q-item-section>
-                <q-item-section>All order</q-item-section>
-              </q-item>
-            </router-link>
-          </q-list>
-
-          <q-separator spaced />
-
-          <q-item clickable v-ripple>
-            <q-item-section avatar>
-              <q-icon color="primary" name="restaurant" />
-            </q-item-section>
-            <q-item-section>Restaurants</q-item-section>
-          </q-item>
-          <q-list>
-            <router-link to="/restaurants/new" class="menu-link">
-              <q-item clickable v-ripple>
-                <q-item-section avatar> </q-item-section>
-                <q-item-section ne>New restaurants</q-item-section>
-              </q-item>
-            </router-link>
-            <router-link to="/restaurants" class="menu-link">
-              <q-item clickable v-ripple>
-                <q-item-section avatar> </q-item-section>
-                <q-item-section>All restaurants</q-item-section>
-              </q-item>
-            </router-link>
-          </q-list>
-        </q-list>
-      </q-scroll-area>
-    </q-drawer>
+    <the-navbar />
 
     <q-page-container>
       <router-view />
@@ -108,6 +22,7 @@
 </template>
 
 <script setup lang="ts">
+import TheNavbar from 'src/components/TheNavbar.vue';
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 

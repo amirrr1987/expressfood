@@ -10,7 +10,12 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
+import { useAppConfigStore } from 'src/stores/AppConfigStore';
+import { onMounted, ref } from 'vue';
 const bar = ref(null);
-
+const appConfigStore = useAppConfigStore();
+onMounted(() => {
+  appConfigStore.state.bar = bar.value;
+  
+});
 </script>

@@ -51,6 +51,7 @@ export const useOrderStore = defineStore('orderStore', () => {
     try {
       const { data } = await api.delete(`/orders/${orderId}`)
       Object.assign(state.orders, data.list)
+      getOrders()
     } catch (error) {
       console.log('error', error);
     }
