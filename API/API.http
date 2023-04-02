@@ -9,7 +9,7 @@ content-type: application/json
 
 {
     "name": "کباب سرای شاهین",
-    "descriptaion": "فست فود ارزان",
+    "description": "فست فود ارزان",
     "address": "بیست متی گلستان شرقی پلاک ۲",
     "message": "09198881400",
     "pic": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Hotdog_-_Evan_Swigart.jpg/1920px-Hotdog_-_Evan_Swigart.jpg",
@@ -20,11 +20,10 @@ content-type: application/json
     }],
     "menus": [
       {
-        
-    "name": "Amir Maghami",
-    "descriptaion": "09198881400",
+      "name": "Amir Maghami",
+      "description": "09198881400",
       "price": 3,
-    "pic": "09198881400",
+      "pic": "09198881400",
     "comments": [
       {
       "user": "asd",
@@ -42,7 +41,7 @@ content-type: application/json
 
 # {
 #     "name": "faaaaaaaaaaaaaaaaaaaamaa afaaaaaaaaMaghami",
-#     "descriptaion": "09198881400",
+#     "description": "09198881400",
 #     "address": "09198881400",
 #     "message": "09198881400",
 #     "pic": "09198881400",
@@ -55,7 +54,7 @@ content-type: application/json
 #       {
         
 #     "name": "Amir Maghami",
-#     "descriptaion": "09198881400",
+#     "description": "09198881400",
 #       "price": 3453453453453453,
 #     "pic": "09198881400",
 #     "comments": [

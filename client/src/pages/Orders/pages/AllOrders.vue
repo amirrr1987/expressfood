@@ -7,7 +7,7 @@
 <script setup lang="ts">
 import ADataTable from 'src/components/DataTable.vue';
 import { onMounted, reactive } from 'vue';
-import { api } from '../boot/axios';
+import { api } from '../../../boot/axios';
 const orders = reactive<any>([]);
 onMounted(async () => {
   const { data } = await api.get('/restaurant');
@@ -25,10 +25,10 @@ const columns = [
   },
   { name: '_id', align: 'center', label: '_id', field: '_id', sortable: true },
   {
-    name: 'descriptaion',
+    name: 'description',
     align: 'center',
-    label: 'descriptaion',
-    field: 'descriptaion',
+    label: 'description',
+    field: 'description',
     sortable: true,
   },
   {

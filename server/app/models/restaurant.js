@@ -18,7 +18,7 @@ const foodSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  descriptaion: {
+  description: {
     type: String,
     required: true
   },
@@ -34,26 +34,26 @@ const foodSchema = new mongoose.Schema({
 })
 const restaurantSchema = new mongoose.Schema({
   name: {
-    type: String, 
-    required: true
-  },
-  descriptaion:{
     type: String,
     required: true
   },
-  score:{
+  description: {
+    type: String,
+    required: true
+  },
+  score: {
     type: Number,
     default: 0
   },
-  address:{
+  address: {
     type: String
   },
-  pic:{
+  pic: {
     type: String
   },
-  comments:[commentSchema],
+  comments: [commentSchema],
   menus: [foodSchema]
 })
 
-module.exports =  mongoose.model("restaurant",restaurantSchema)
+module.exports = mongoose.model("restaurant", restaurantSchema)
 

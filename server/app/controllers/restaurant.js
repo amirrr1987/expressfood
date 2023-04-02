@@ -20,8 +20,8 @@ class Restaurant {
     if (error) return res.status(400).send({ message: error })
     let restaurant = new RestaurantModel(body)
     await restaurant.save()
-    console.log(restaurant);
-    // res.send(restaurant)  
+    // console.log(restaurant);
+    res.send(restaurant)  
   }
   async update(req, res) {
     const { body, params } = req;

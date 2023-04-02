@@ -13,7 +13,7 @@ const commentSchema = z.object({
 
 const foodSchema = z.object({
   name: z.string(),
-  descriptaion: z.string(),
+  description: z.string(),
   price: z
     .number()
     .int()
@@ -25,7 +25,7 @@ const foodSchema = z.object({
 
 const restaurantSchema = z.object({
   name: z.string(),
-  descriptaion: z.string(),
+  description: z.string(),
   score: z
     .number()
     .int()
