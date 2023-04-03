@@ -4,12 +4,14 @@ import { api } from 'src/boot/axios';
 import { useAppConfigStore } from './AppConfigStore';
 interface State {
   orders: string[]
+  order: any
 }
 
 export const useOrderStore = defineStore('orderStore', () => {
 
   const state = reactive<State>({
-    orders: []
+    orders: [],
+    order: {}
   })
 
   const getOrders = async () => {

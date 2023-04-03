@@ -1,28 +1,29 @@
 <template>
   <q-page class="q-pa-xl">
-    <q-form @submit="submitForm">
-      <q-input outlined v-model="newRestaunts.name" label="Name" />
+    <q-form @submit="userStore.createUsers" class="q-gutter-md">
+      <q-input outlined v-model="userStore.state.user.pic" label="Name" />
+
+      <q-input outlined v-model="userStore.state.user.name" label="Name" />
       <q-input
         outlined
-        v-model="newRestaunts.description"
+        v-model="userStore.state.user.description"
         label="Description"
       />
-      <q-input outlined v-model="newRestaunts.address" label="Address" />
-      <q-btn type="submit" label="Submit" />
+      <q-input
+        outlined
+        type="textarea"
+        v-model="userStore.state.user.address"
+        label="Address"
+      />
+
+      <q-btn label="Submit" type="submit" color="primary" />
+      <q-btn label="Reset" type="reset" color="primary" flat class="q-ml-sm" />
     </q-form>
   </q-page>
 </template>
 
 <script setup lang="ts">
-import { reactive } from 'vue';
+import { useUserStore } from 'src/stores/UserStore';
 
-const newRestaunts = reactive({
-  name: '',
-  description: '',
-  address: '',
-});
-
-const submitForm = () => {
-  console.log(newRestaunts);
-};
+const userStore = useUserStore();
 </script>
