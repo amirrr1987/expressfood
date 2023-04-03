@@ -4,6 +4,8 @@ import { api } from 'src/boot/axios';
 import { useAppConfigStore } from './AppConfigStore';
 import _ from "lodash";
 import HandelNotify from "src/utils/HandelNotify";
+import { useRouter } from 'vue-router';
+const router = useRouter()
 interface State {
   user: {
     userName: string,
@@ -26,6 +28,7 @@ export const useAuthStore = defineStore('authStore', () => {
   }
   const loginUser = async () => {
     appConfigStore.startBar()
+    router.push({ name: 'DashboardIndex' })
     try {
       const { data } = await api.post('/auth/login', state.user)
       console.log(data);
@@ -34,7 +37,7 @@ export const useAuthStore = defineStore('authStore', () => {
     } catch (error) {
       appConfigStore.stopBar()
       resetUser()
-      HandelNotify.Error({ message: error.message })
+      HandelNotify.Error({ message: error?.response?.data.message })
     }
   }
   const registerUser = async () => {

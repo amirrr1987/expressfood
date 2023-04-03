@@ -7,9 +7,9 @@ class AuthController {
     const { body } = req;
     const { error } = await AuthValidator.login({ data: body })
     if (error) return res.status(400).send({ message: error })
-    // const one = await UserModel.findOne({ userName: body.userName })
-    // if (!one) return res.status(400).send({ message: "not found" })
-    // res.send(one)
+    const one = await UserModel.findOne({ userName: body.userName })
+    if (!one) return res.status(400).send({ message: "Username or password is incorrect" })
+    res.send(one)
   }
   async register(req, res) {
     const { body } = req;

@@ -29,13 +29,13 @@
           <router-link to="/users/new" class="text-blue-grey-6 the-navbar">
             <q-item clickable v-ripple>
               <q-item-section avatar> </q-item-section>
-              <q-item-section ne>New user</q-item-section>
+              <q-item-section ne>New</q-item-section>
             </q-item>
           </router-link>
           <router-link to="/users" class="text-blue-grey-6 the-navbar">
             <q-item clickable v-ripple>
               <q-item-section avatar> </q-item-section>
-              <q-item-section>All Users</q-item-section>
+              <q-item-section>List</q-item-section>
             </q-item>
           </router-link>
         </q-expansion-item>
@@ -51,13 +51,13 @@
           <router-link to="/orders/new" class="text-blue-grey-6 the-navbar">
             <q-item clickable v-ripple>
               <q-item-section avatar> </q-item-section>
-              <q-item-section ne>New Orders</q-item-section>
+              <q-item-section ne>New</q-item-section>
             </q-item>
           </router-link>
           <router-link to="/orders" class="text-blue-grey-6 the-navbar">
             <q-item clickable v-ripple>
               <q-item-section avatar> </q-item-section>
-              <q-item-section>All Orders</q-item-section>
+              <q-item-section>List</q-item-section>
             </q-item>
           </router-link>
         </q-expansion-item>
@@ -73,13 +73,13 @@
           <router-link to="/restaurants/new" class="text-blue-grey-6 the-navbar">
             <q-item clickable v-ripple>
               <q-item-section avatar> </q-item-section>
-              <q-item-section ne>New restaurants</q-item-section>
+              <q-item-section ne>New</q-item-section>
             </q-item>
           </router-link>
           <router-link to="/restaurants" class="text-blue-grey-6 the-navbar">
             <q-item clickable v-ripple>
               <q-item-section avatar> </q-item-section>
-              <q-item-section>All restaurants</q-item-section>
+              <q-item-section>List</q-item-section>
             </q-item>
           </router-link>
         </q-expansion-item>
