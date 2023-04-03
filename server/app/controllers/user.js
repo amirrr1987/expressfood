@@ -1,5 +1,5 @@
-const UserModel = require("../models/restaurant")
-const UserValidator = require("../validators/restaurant")
+const UserModel = require("../models/user")
+const UserValidator = require("../validators/user")
 // const _ = require("loadash")
 class User {
   async getList(req, res) {
@@ -7,9 +7,8 @@ class User {
     res.send({ list })
   }
   async getOne(req, res) {
-    const { params } = req;
-    const { id } = params
-    const one = await UserModel.findById(id)
+    const { body } = req;
+    const one = await UserModel.find({userName: body.userName})
     if (!one) return res.status(400).send({ message: "not found" })
     res.send(one)
   }
@@ -17,9 +16,12 @@ class User {
     const { body } = req;
     const { error } = await UserValidator.HandelUserCreate({ data: body })
     if (error) return res.status(400).send({ message: error })
-    let restaurant = new UserModel(body)
-    restaurant = await restaurant.save()
-    res.send(restaurant)  
+    let user = await UserModel.findOne({userName: body.userName})
+    if (user) return res.send({ message: 'user tekrari' })
+    user = new UserModel(body)
+    user = await user.save()
+    res.send(user)
+
   }
   async update(req, res) {
     const { body, params } = req;
@@ -34,7 +36,7 @@ class User {
   async delete(req, res) {
     const { params } = req;
     const deletedUser = await UserModel.findByIdAndRemove(params.id)
-    if(!deletedUser) return res.status(404).send({message: "id not found"})
+    if (!deletedUser) return res.status(404).send({ message: "id not found" })
     res.status(200).send(deletedUser)
 
   }

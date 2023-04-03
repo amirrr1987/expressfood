@@ -21,7 +21,6 @@
 
 <script setup lang="ts">
 import { onMounted } from 'vue';
-
 import { useRestaurantStore } from 'src/stores/RestaurantStore';
 
 const restaurantStore = useRestaurantStore();
@@ -31,40 +30,40 @@ onMounted(async () => {
 });
 
 const columns = [
-  { name: '_id', align: 'center', label: '_id', field: '_id', sortable: true },
-  { name: 'name', align: 'top', label: 'name', field: 'name', sortable: true },
+  { name: '_id', align: 'left', label: 'Id', field: '_id', sortable: true },
+  { name: 'name', align: 'left', label: 'Name', field: 'name', sortable: true },
   {
     name: 'address',
-    align: 'center',
-    label: 'address',
+    align: 'left',
+    label: 'Address',
     field: 'address',
     sortable: true,
   },
   {
     name: 'description',
-    align: 'center',
-    label: 'description',
+    align: 'left',
+    label: 'Description',
     field: 'description',
     sortable: true,
   },
   {
     name: 'pic',
-    align: 'center',
-    label: 'pic',
+    align: 'left',
+    label: 'Picture',
     field: 'pic',
     sortable: true,
   },
   {
     name: 'score',
-    align: 'top',
-    label: 'score',
+    align: 'left',
+    label: 'Score',
     field: 'score',
     sortable: true,
   },
   {
     name: 'action',
-    align: 'center',
-    label: 'action',
+    align: 'left',
+    label: 'Action',
     field: 'action',
     sortable: true,
   },

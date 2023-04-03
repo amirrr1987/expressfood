@@ -9,7 +9,7 @@
   >
     <q-scroll-area class="fit">
       <q-list bordered>
-        <router-link to="/" class="text-indigo-8 the-navbar">
+        <router-link to="/" class="text-primary the-navbar">
           <q-item clickable v-ripple>
             <q-item-section avatar>
               <q-icon color="primary" name="home" />
@@ -24,7 +24,7 @@
           group="somegroup"
           icon="group"
           label="Users"
-          header-class="text-indigo-8"
+          header-class="text-primary"
         >
           <router-link to="/users/new" class="text-blue-grey-6 the-navbar">
             <q-item clickable v-ripple>
@@ -46,7 +46,7 @@
           group="somegroup"
           icon="shopping_cart"
           label="Orders"
-          header-class="text-indigo-8"
+          header-class="text-primary"
         >
           <router-link to="/orders/new" class="text-blue-grey-6 the-navbar">
             <q-item clickable v-ripple>
@@ -68,7 +68,7 @@
           group="somegroup"
           icon="restaurant"
           label="Restaurants"
-          header-class="text-indigo-8"
+          header-class="text-primary"
         >
           <router-link to="/restaurants/new" class="text-blue-grey-6 the-navbar">
             <q-item clickable v-ripple>
