@@ -19,7 +19,7 @@ class NotifyClass {
     Notify.setDefaults({
       position: 'top',
       timeout: 3000,
-      icon: 'warning',
+      icon: 'error',
       color: 'white',
       textColor: 'red',
     })
@@ -30,9 +30,19 @@ class NotifyClass {
     Notify.setDefaults({
       position: 'top',
       timeout: 3000,
-      icon: 'warning',
+      icon: 'check_circle',
       color: 'white',
       textColor: 'green',
+    })
+    Notify.create(message)
+  }
+  Info({ message }: { message: string }) {
+    Notify.setDefaults({
+      position: 'top',
+      timeout: 3000,
+      icon: 'info',
+      color: 'white',
+      textColor: 'blue',
     })
     Notify.create(message)
   }

@@ -22,8 +22,8 @@ const routes: RouteRecordRaw[] = [
         path: '/restaurants',
         component: () => import('src/pages/Restaurants/RestaurantsIndex.vue'),
         children: [
-          { path: '/restaurants/', component: () => import('src/pages/Restaurants/pages/AllRestaurants.vue') },
-          { path: '/restaurants/new', component: () => import('src/pages/Restaurants/pages/NewRestaurants.vue') }
+          { path: '/restaurants/', name: 'AllRestaurants', component: () => import('src/pages/Restaurants/pages/AllRestaurants.vue') },
+          { path: '/restaurants/new', name: 'NewRestaurants', component: () => import('src/pages/Restaurants/pages/NewRestaurants.vue') }
         ]
       },
       {

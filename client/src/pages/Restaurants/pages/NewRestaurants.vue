@@ -4,19 +4,24 @@
       <legend>Create new restaurant:</legend>
       <q-input
         outlined
-        v-model="restaurantStore.state.restaurant.pic"
+        v-model="restaurantStore.state.restaurant.name"
         label="Name"
       />
 
       <q-input
         outlined
-        v-model="restaurantStore.state.restaurant.name"
-        label="Name"
+        v-model="restaurantStore.state.restaurant.description"
+        label="Description"
       />
       <q-input
         outlined
-        v-model="restaurantStore.state.restaurant.description"
-        label="Description"
+        v-model="restaurantStore.state.restaurant.adminUsername"
+        label="Admin username"
+      />
+      <q-input
+        outlined
+        v-model="restaurantStore.state.restaurant.adminPassword"
+        label="Admin password"
       />
       <q-input
         outlined

@@ -26,20 +26,22 @@ class RestaurantController {
   }
   async create(req, res) {
     const { body } = req;
-    const bodyData = _.pick(body, ["name","description","adminUsername","adminPassword"])
-    const { error } = await RestaurantValidator.create({ data: bodyData })
-    if (error) return res.status(400).send({ message: error })
-    let restaurant = new RestaurantModel(bodyData)
+    const bodyData = _.pick(body, ["name", "description", "adminUsername", "adminPassword","address"])
+    const { success, error } = await RestaurantValidator.create({ data: bodyData })
+    if (!success) return res.status(400).send({ message: error.issues })
     const salt = await bcrypt.genSalt(config.get('salt'))
-    restaurant.adminPassword =  await bcrypt.hash(restaurant.adminPassword, salt)
+    bodyData.adminPassword = await bcrypt.hash(bodyData.adminPassword, salt)
+    let restaurant = new RestaurantModel(bodyData)
     restaurant = await restaurant.save()
     res.send({
-      data: _.pick(restaurant, ["name","description","adminUsername"])
+      success: true,
+      data: _.pick(restaurant, ["_id","name", "description", "adminUsername",]),
+      message: 'restaurant created'
     })
   }
   async update(req, res) {
     const { body, params } = req;
-    const bodyData = _.pick(body, ["name","description","adminUsername","adminPassword"])
+    const bodyData = _.pick(body, ["name", "description", "adminUsername", "adminPassword"])
     const { error } = await RestaurantValidator.update({ data: body })
     if (error) return res.status(400).send({ message: error })
     const restaurant = await RestaurantModel.findByIdAndUpdate(params.id, {
@@ -51,18 +53,18 @@ class RestaurantController {
     res.send({
       success: true,
       message: "User found",
-      data: _.pick(restaurant, ["name","description","adminUsername","adminPassword"])
+      data: _.pick(restaurant, ["name", "description", "adminUsername", "adminPassword"])
     })
   }
   async delete(req, res) {
     const { params } = req;
     const restaurant = await RestaurantModel.findByIdAndRemove(params.id)
-    if(!restaurant) return res.status(404).send({message: "id not found"})
+    if (!restaurant) return res.status(404).send({ message: "id not found" })
     res.status(200).send(
-        {
-          success: true,
-          message: "user is delete"
-        }
+      {
+        success: true,
+        message: "user is delete"
+      }
     )
 
   }

@@ -5,7 +5,8 @@ import { useAppConfigStore } from './AppConfigStore';
 import _ from "lodash";
 
 import HandelNotify from "src/utils/HandelNotify";
-
+import { useRouter } from 'vue-router';
+const router = useRouter()
 interface Restaurant {
   name: string,
   description: string,
@@ -13,6 +14,8 @@ interface Restaurant {
   pic: string,
   comments: string[],
   menus: string[],
+  adminUsername: string,
+  adminPassword: string,
 }
 interface State {
   restaurants: string[]
@@ -31,6 +34,8 @@ export const useRestaurantStore = defineStore('restaurantStore', () => {
       pic: '',
       comments: [],
       menus: [],
+      adminUsername: '',
+      adminPassword: '',
     }
   })
 
@@ -45,8 +50,8 @@ export const useRestaurantStore = defineStore('restaurantStore', () => {
 
     try {
       const { data } = await api.get('/restaurant')
-      Object.assign(state.restaurants, data.list)
-      HandelNotify.handelSccess({message: 'create sucsess'})
+      Object.assign(state.restaurants, data.data)
+      HandelNotify.Success({ message: 'Get data successfully' })
     } catch (error) {
       console.log('error', error);
     }
@@ -61,8 +66,11 @@ export const useRestaurantStore = defineStore('restaurantStore', () => {
     try {
       await api.post('/restaurant', state.restaurant)
       resetRestaurant()
+      HandelNotify.Success({ message: 'Create data successfully' })
+
     } catch (error) {
-      console.log('error', error);
+      console.log(error?.response?.data?.message);
+      HandelNotify.Error({ message: error.message })
     }
     finally {
       appConfigStore.stopBar()
