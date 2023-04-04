@@ -2,10 +2,12 @@ const mongoose = require("mongoose")
 
 const commentSchema = new mongoose.Schema({
   user: {
-    type: String
+    type: String,
+    required: true
   },
   text: {
-    type: String
+    type: String,
+    required: true
   },
   score: {
     type: Number
@@ -13,13 +15,16 @@ const commentSchema = new mongoose.Schema({
 })
 const foodSchema = new mongoose.Schema({
   name: {
-    type: String
+    type: String,
+    required: true
   },
   description: {
-    type: String
+    type: String,
+    required: true
   },
   price: {
-    type: Number
+    type: Number,
+    required: true
   },
   pic: {
     type: String
@@ -31,7 +36,8 @@ const restaurantSchema = new mongoose.Schema({
     type: String
   },
   description: {
-    type: String
+    type: String,
+    required: true
   },
   score: {
     type: Number,
@@ -44,7 +50,9 @@ const restaurantSchema = new mongoose.Schema({
     type: String
   },
   comments: [commentSchema],
-  menus: [foodSchema]
+  menus: [foodSchema],
+  adminUsername: String,
+  adminPassword: String,
 })
 
 module.exports = mongoose.model("restaurant", restaurantSchema)

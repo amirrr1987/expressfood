@@ -23,30 +23,35 @@ const foodSchema = z.object({
   pic: z.string()
 })
 
-const restaurantSchema = z.object({
+const createRestaurantSchema = z.object({
   name: z.string(),
   description: z.string(),
-  score: z
-    .number()
-    .int()
-    .gte(0)
-    .describe("Age in years")
-    .optional(),
-  address: z.string(),
-  pic: z.string(),
-  comments: z.array(commentSchema),
-  menus: z.array(foodSchema)
+  address: z.string().optional(),
+  adminUsername: z.string(),
+  adminPassword: z.string(),
 })
 
-class Restaurant {
+const updateRstaurantSchema = z.object({
+  name: z.string().optional(),
+  description: z.string().optional(),
+  address: z.string().optional(),
+  adminUsername: z.string().optional(),
+  adminPassword: z.string().optional(),
+})
+
+class RestaurantValidator {
 
   constructor() {
-    this.restaurantSchema = restaurantSchema
+    this.createRestaurant = createRestaurantSchema
+    this.updateRstaurant = updateRstaurantSchema
   }
 
-  HandelRestaurantCreate({ data }) {
-    return this.restaurantSchema.safeParse(data)
+  create({ data }) {
+    return this.createRestaurant.safeParse(data)
+  }
+  update({ data }) {
+    return this.updateRstaurant.safeParse(data)
   }
 }
 
-module.exports = new Restaurant
+module.exports = new RestaurantValidator

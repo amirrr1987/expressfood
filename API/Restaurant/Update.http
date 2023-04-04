@@ -1,0 +1,8 @@
+
+PUT http://localhost:5000/api/restaurant/642bb6a110a8ab629322855f HTTP/1.1
+content-type: application/json
+
+{
+    "description": "zxczxc"
+
+}

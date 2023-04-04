@@ -1,11 +1,9 @@
-# GET http://localhost:5000/api/restaurant/234324 HTTP/1.1
-# content-type: application/json
-
-# GET http://localhost:5000/api/restaurant/6423f7f5c550628f5200f77e HTTP/1.1
-# content-type: application/json
-
-POST http://localhost:5000/api/restaurant HTTP/1.1
+POST http://localhost:5000/api/restaurant
 content-type: application/json
+Content-Length: 1493
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.6)
+Accept-Encoding: br,deflate,gzip,x-gzip
 
 {
     "name": "کباب سرای شاهین",
@@ -52,7 +50,7 @@ content-type: application/json
 #     }],
 #     "menus": [
 #       {
-        
+
 #     "name": "Amir Maghami",
 #     "description": "09198881400",
 #       "price": 3453453453453453,
@@ -71,3 +69,8 @@ content-type: application/json
 
 # DELETE http://localhost:5000/api/restaurant/6423e2755b8bde6ea09cc4cc HTTP/1.1
 # content-type: application/json
+
+<> 2023-04-04T085001.500.json
+
+###
+
