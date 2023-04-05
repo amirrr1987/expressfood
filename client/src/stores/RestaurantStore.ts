@@ -16,6 +16,7 @@ interface Restaurant {
   menus: string[],
   adminUsername: string,
   adminPassword: string,
+  adminConfrimPassword: string,
 }
 interface State {
   restaurants: string[]
@@ -36,6 +37,7 @@ export const useRestaurantStore = defineStore('restaurantStore', () => {
       menus: [],
       adminUsername: '',
       adminPassword: '',
+      adminConfrimPassword: ''
     }
   })
 

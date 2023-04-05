@@ -10,6 +10,22 @@
           </q-avatar>
           Title
         </q-toolbar-title>
+        <q-btn
+          :to="{ name: 'TheLogin' }"
+          label="Login"
+          flat
+          rounded 
+          icon="login"
+          color="white"
+        />
+        <q-btn
+          :to="{ name: 'TheRegister' }"
+          label="Register"
+          flat
+          rounded 
+          icon="logout"
+          color="white"
+        />
       </q-toolbar>
     </q-header>
 

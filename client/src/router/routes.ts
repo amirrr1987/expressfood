@@ -22,8 +22,8 @@ const routes: RouteRecordRaw[] = [
         path: '/restaurants',
         component: () => import('src/pages/Restaurants/RestaurantsIndex.vue'),
         children: [
-          { path: '/restaurants/', name: 'AllRestaurants', component: () => import('src/pages/Restaurants/pages/AllRestaurants.vue') },
-          { path: '/restaurants/new', name: 'NewRestaurants', component: () => import('src/pages/Restaurants/pages/NewRestaurants.vue') }
+          { path: '/restaurants/', name: 'TheRestaurants', component: () => import('src/pages/Restaurants/pages/AllRestaurants.vue') },
+          { path: '/restaurants/new', name: 'TheNewRestaurant', component: () => import('src/pages/Restaurants/pages/NewRestaurants.vue') }
         ]
       },
       {
@@ -46,10 +46,12 @@ const routes: RouteRecordRaw[] = [
     children: [
       {
         path: '/auth/login',
+        name: 'TheLogin',
         component: () => import('src/pages/Auth/pages/TheLogin.vue'),
       },
       {
         path: '/auth/register',
+        name: 'TheRegister',
         component: () => import('src/pages/Auth/pages/TheRegister.vue'),
       },
     ]
