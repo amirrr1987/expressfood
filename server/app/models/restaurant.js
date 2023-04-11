@@ -44,7 +44,7 @@ const restaurantSchema = new mongoose.Schema({
     type: Number,
     default: 0
   },
-  address : {
+  address: {
     type: String
   },
   pic: {
@@ -52,15 +52,15 @@ const restaurantSchema = new mongoose.Schema({
   },
   comments: [commentSchema],
   menus: [foodSchema],
-  adminUsername: {
+  userId: {
     type: String,
     required: true
-  },
-  adminPassword: {
-    type: String,
-    required: true
-  },
+  }
 })
+
+restaurantSchema.methods.getAuth = ()=>{
+  s:S
+}
 
 module.exports = mongoose.model("restaurant", restaurantSchema)
 

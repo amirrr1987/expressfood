@@ -67,7 +67,7 @@ export const useRestaurantStore = defineStore('restaurantStore', () => {
     const appConfigStore = useAppConfigStore()
     appConfigStore.startBar()
     try {
-      await api.post('/restaurant', state.restaurant)
+      await api.post('/user', state.restaurant)
       resetRestaurant()
       getRestaurants()
       HandelNotify.Success({ message: 'Create data successfully' })
@@ -101,7 +101,7 @@ export const useRestaurantStore = defineStore('restaurantStore', () => {
     try {
       const { data } = await api.get('/restaurant')
       Object.assign(state.restaurants, data.list)
-      getRestaurants()
+      await getRestaurants()
     } catch (error) {
       console.log('error', error);
     }

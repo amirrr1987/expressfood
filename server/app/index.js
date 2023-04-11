@@ -4,20 +4,26 @@ const app = express()
 const cors = require("cors");
 const routes = require("./routes")
 const config = require('config');
-
+const morgon = require('morgan')
+const debug = require('debug')
 class App {
   constructor() {
     this.setupDatabase()
     this.setupMiddlewares();
     this.setupRoutes()
     this.setupServer()
+    this.debugDB = debug('app:DB')
+    this.debugConfing = debug('app:Confing')
   }
   setupRoutes() {
     app.use("/api", routes)
   }
   setupMiddlewares() {
+    this.debugConfing('middlewarw')
     app.use(express.json())
     app.use(cors());
+    if(app.get("env") === "development")
+      app.use(morgon('tiny'))
     app.use(function (err, req, res, next) {
       if (err instanceof SyntaxError && err.status === 400 && 'body' in err) {
         return res
@@ -39,7 +45,7 @@ class App {
           useNewUrlParser: true,
           useUnifiedTopology: true,
         })
-      console.log('db is connected');
+      this.debugDB('DB is connected')
     } catch (error) {
       console.log(error);
     }

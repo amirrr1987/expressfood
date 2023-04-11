@@ -3,8 +3,11 @@ const RestaurantValidator = require("../validators/restaurant")
 const _ = require("lodash")
 const bcrypt = require("bcrypt")
 const config = require("config");
+const { EventBus } = require("../utlis");
 // const _ = require("loadash")
 class RestaurantController {
+
+
   async getList(req, res) {
     // const list = await RestaurantModel.find().select("name description score").limit(20)
     const list = await RestaurantModel.find().select("name description score adminUsername pic address").limit(20)
@@ -26,19 +29,38 @@ class RestaurantController {
   }
   async create(req, res) {
     const { body } = req;
-    const bodyData = _.pick(body, ["name", "description", "adminUsername", "adminPassword","address"])
+    const bodyData = _.pick(body, ["name", "description", "adminUsername", "adminPassword", "address"])
+
+
     const { success, error } = await RestaurantValidator.create({ data: bodyData })
     if (!success) return res.status(400).send({ message: error.issues })
+
+
+
+
     const salt = await bcrypt.genSalt(config.get('salt'))
     bodyData.adminPassword = await bcrypt.hash(bodyData.adminPassword, salt)
     let restaurant = new RestaurantModel(bodyData)
-    restaurant = await restaurant.save()
-    res.send({
-      success: true,
-      data: _.pick(restaurant, ["_id","name", "description", "adminUsername",]),
-      message: 'restaurant created'
-    })
+    const obj = () => {
+      return {
+        ..._.pick(body, ["adminUsername", "adminPassword"]),
+        role: 'agent'
+      }
+    }
+    EventBus.emit('create-user', obj)
+
+    // restaurant = await restaurant.save()
+
+
+    // res.send({
+    //   success: true,
+    //   data: _.pick(restaurant, ["_id","name", "description", "adminUsername",]),
+    //   message: 'restaurant created'
+    // })
   }
+
+
+
   async update(req, res) {
     const { body, params } = req;
     const bodyData = _.pick(body, ["name", "description", "adminUsername", "adminPassword"])
