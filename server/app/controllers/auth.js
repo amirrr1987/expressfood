@@ -1,5 +1,5 @@
-const UserModel = require("../models/user")
-const AuthValidator = require("../validators/auth")
+const UserModel = require("@/models/user")
+const AuthValidator = require("@/validators/auth")
 // const _ = require("loadash")
 class AuthController {
 

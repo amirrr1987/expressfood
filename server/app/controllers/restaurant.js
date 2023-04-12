@@ -1,9 +1,9 @@
-const RestaurantModel = require("../models/restaurant")
-const RestaurantValidator = require("../validators/restaurant")
+const RestaurantModel = require("@/models/restaurant")
+const RestaurantValidator = require("@/validators/restaurant")
 const _ = require("lodash")
 const bcrypt = require("bcrypt")
 const config = require("config");
-const { EventBus } = require("../utlis");
+const { EventBus } = require("@/utlis");
 // const _ = require("loadash")
 class RestaurantController {
 

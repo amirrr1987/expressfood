@@ -1,8 +1,9 @@
+require('module-alias/register')
 const express = require("express")
 const { default: mongoose } = require("mongoose")
 const app = express()
 const cors = require("cors");
-const routes = require("./routes")
+const routes = require("@/routes")
 const config = require('config');
 const morgon = require('morgan')
 const debug = require('debug')
@@ -19,10 +20,10 @@ class App {
     app.use("/api", routes)
   }
   setupMiddlewares() {
-    this.debugConfing('middlewarw')
+    // this.debugConfing('middlewarw')
     app.use(express.json())
     app.use(cors());
-    if(app.get("env") === "development")
+    if (app.get("env") === "development")
       app.use(morgon('tiny'))
     app.use(function (err, req, res, next) {
       if (err instanceof SyntaxError && err.status === 400 && 'body' in err) {

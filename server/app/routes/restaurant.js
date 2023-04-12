@@ -1,6 +1,6 @@
 const router = require("express").Router()
-const restaurantController = require("../controllers/restaurant")
-const userController = require("../controllers/user")
+const restaurantController = require("@/controllers/restaurant")
+const userController = require("@/controllers/user")
 
 
 // router.get("/", restaurantController.getList)

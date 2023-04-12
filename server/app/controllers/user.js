@@ -1,6 +1,6 @@
-const UserModel = require("../models/user")
-const UserValidator = require("../validators/user")
-const { EventBus } = require("../utlis");
+const UserModel = require("@/models/user")
+const UserValidator = require("@/validators/user")
+const { EventBus } = require("@/utlis");
 
 // const _ = require("loadash")
 class User {
