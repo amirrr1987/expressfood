@@ -23,35 +23,31 @@ const foodSchema = z.object({
   pic: z.string()
 })
 
-const createRestaurantSchema = z.object({
-  name: z.string().min(3),
-  description: z.string().min(3),
-  adminUsername: z.string().min(3),
-  adminPassword: z.string().min(3),
-  address: z.string().optional(),
-})
-
-const updateRstaurantSchema = z.object({
+const RestaurantSchema = z.object({
+  _id: z.string().uuid(),
   name: z.string().optional(),
   description: z.string().optional(),
   address: z.string().optional(),
   adminUsername: z.string().optional(),
   adminPassword: z.string().optional(),
+  confirmPassword: z.string(),
+}).refine((data) => data.password === data.confirmPassword, {
+  message: "Passwords don't match",
+  path: ["confirmPassword"], // 
 })
 
 class RestaurantValidator {
 
-  // constructor() {
-  //   this.createRestaurant = createRestaurantSchema
-  //   this.updateRstaurant = updateRstaurantSchema
-  // }
-
-  create({ data }) {
-    return createRestaurantSchema.safeParse(data)
+  constructor() {
+    this.restaurant = RestaurantSchema
   }
-  update({ data }) {
-    return updateRstaurantSchema.safeParse(data)
+
+  onCreate({ dataForValidation }) {
+    return this.restaurant.safeParse(dataForValidation).omit({ _id: true })
+  }
+  onUpdate({ dataForValidation }) {
+    return this.restaurant.safeParse(dataForValidation)
   }
 }
 
-module.exports = new RestaurantValidator
+module.exports = new RestaurantValidator()

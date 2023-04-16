@@ -35,7 +35,7 @@ class User {
     const { error } = await UserValidator.HandelUserCreate({ data: body })
     if (error) return res.status(400).send({ message: error })
     let user = await UserModel.findOne({ userName: body.userName })
-    if (user) return res.send({ message: 'user tekrari' })
+    if (user) return res.send({ message: 'This user was registered' })
     user = new UserModel(body)
     user = await user.save()
 
@@ -67,10 +67,10 @@ class User {
     const { error } = await UserValidator.HandelUserCreate({ data: data })
     if (error) return res.status(400).send({ message: error })
     let user = await UserModel.findOne({ userName: data.userName })
-    if (user) return res.send({ message: 'user tekrari' })
+    if (user) return res.send({ message: 'This user was registered' })
     user = new UserModel(data)
     user = await user.save()
-    EventBus.emit('create-restraunt', user._id )
+    EventBus.emit('create-restaurant', user._id )
     
 
   }

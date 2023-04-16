@@ -1,5 +1,5 @@
 const RestaurantModel = require("@/models/restaurant")
-const RestaurantValidator = require("@/validators/restaurant")
+const RestaurantValidator = require("../validators/restaurant")
 const _ = require("lodash")
 const bcrypt = require("bcrypt")
 const config = require("config");
@@ -28,12 +28,19 @@ class RestaurantController {
     res.send(restaurant)
   }
   async create(req, res) {
-    const { body } = req;
-    const bodyData = _.pick(body, ["name", "description", "adminUsername", "adminPassword", "address"])
+    const bodyData = _.pick(req.body, ["name", "description", "adminUsername", "adminPassword", "address"])
 
 
-    const { success, error } = await RestaurantValidator.create({ data: bodyData })
-    if (!success) return res.status(400).send({ message: error.issues })
+    const { success, error } = await RestaurantValidator.onCreate(({ dataForValidation: bodyData }))
+    if (!success) {
+      return res
+        .status(400)
+        .send({
+          message: error.issues,
+          success: false,
+          code: 400
+        })
+    }
 
 
 
