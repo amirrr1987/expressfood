@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { CategoryElement, FastFoodElement } from "@/models";
 import services from "@/services";
 import SearchBar from "@/SearchBar";
+import TheFooter from "@/TheFooter";
 
 function App() {
   
@@ -75,6 +76,7 @@ function App() {
         <SearchBar  searchItems={searchItems} />
       </TheNavbar>
       <FastFoodList fastFoodList={fastFoodList} loading={loadingFastFood} />
+      <TheFooter />
     </>
   );
 }
