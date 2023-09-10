@@ -17,6 +17,7 @@
   "dependencies": {
     "@quasar/extras": "^1.0.0",
     "axios": "^1.2.1",
+    "console-log-advanced": "^1.5.0",
     "lodash": "^4.17.21",
     "pinia": "^2.0.11",
     "quasar": "^2.6.0",
@@ -30,7 +31,6 @@
     "@types/node": "^12.20.21",
     "@typescript-eslint/eslint-plugin": "^5.10.0",
     "@typescript-eslint/parser": "^5.10.0",
-    "advanced-console-log": "^0.0.10",
     "autoprefixer": "^10.4.2",
     "electron": "^23.2.1",
     "eslint": "^8.10.0",
