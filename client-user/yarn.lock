@@ -785,6 +785,14 @@
     "@unocss/core" "0.55.7"
     css-tree "^2.3.1"
 
+"@unocss/transformer-directives@^0.55.7":
+  version "0.55.7"
+  resolved "https://registry.yarnpkg.com/@unocss/transformer-directives/-/transformer-directives-0.55.7.tgz#f82f72f86c3e0024d27097ec75d4cad3ce060a2c"
+  integrity sha512-xNmR40FssHWYJSmJv/9TQC2IdTyZPV8U3Iv/PIuke1zndMwMciclghEFiw0wSeRmhoRI7iFZck5EI/Bokyo7CQ==
+  dependencies:
+    "@unocss/core" "0.55.7"
+    css-tree "^2.3.1"
+
 "@unocss/transformer-variant-group@0.55.7":
   version "0.55.7"
   resolved "https://registry.npmjs.org/@unocss/transformer-variant-group/-/transformer-variant-group-0.55.7.tgz"
@@ -837,6 +845,11 @@ ajv@^6.12.4:
     fast-json-stable-stringify "^2.0.0"
     json-schema-traverse "^0.4.1"
     uri-js "^4.2.2"
+
+animate.css@^4.1.1:
+  version "4.1.1"
+  resolved "https://registry.yarnpkg.com/animate.css/-/animate.css-4.1.1.tgz#614ec5a81131d7e4dc362a58143f7406abd68075"
+  integrity sha512-+mRmCTv6SbCmtYJCN4faJMNFVNN5EuCTTprDTAo7YzIGji2KADmakjVA3+8mVDkZ2Bf09vayB35lSQIex2+QaQ==
 
 ansi-regex@^5.0.1:
   version "5.0.1"

@@ -1,13 +1,13 @@
 import { Icon } from "@iconify/react";
 import { useState } from "react";
+import "animate.css";
 import "./index.style.less";
 
 interface Props{
-  searchItems: ()=> Promise<void>
+  searchItems: ()=> void
 }
 
 const SearchBar = ({searchItems}:Props) => {
-  const [focus, setFocus] = useState(false);
   const [value, setValue] = useState("");
   const onSubmit = (event: { preventDefault: () => void; }) => {
     event.preventDefault()
@@ -16,16 +16,13 @@ const SearchBar = ({searchItems}:Props) => {
   }
   return (
     <form
-      className={`search-bar flex items-center border px-2 rounded w-full duration-1000 ${focus ? "flex-1" : ""
-        }`}
-      onMouseEnter={() => setFocus(false)}
-      onMouseLeave={() => setFocus(true)}
+      className="search-bar"
       onSubmit={onSubmit}
     >
-      <Icon icon="tabler:search" />
+      <Icon className="search-bar__icon" icon="tabler:search" />
       <input
         type="text"
-        className="focus-visible:outline-none py-2 flex-1 mr-2"
+        className="search-bar__input"
         placeholder="جستجوی فست فود"
         value={value}
         onInput={(event: unknown) =>

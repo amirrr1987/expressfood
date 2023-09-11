@@ -1,12 +1,13 @@
 .search-bar{
-    & > input{
-        &::focus-visible{
-            .search-bar {
-                background-color: red !important
-            };
-        }
+    @apply flex items-center gap-x-2 pr-2 rounded-full w-80 overflow-hidden border duration-400;
+    &:focus-within{
+            @apply w-320;
     }
-    & > svg{
-
+    &__input{
+        @apply flex-1 p-2 outline-none;
+   
+    }
+    &__icon{
+        @apply w-4 h-4;
     }
 }

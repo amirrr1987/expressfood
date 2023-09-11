@@ -1,30 +1,36 @@
 import { FastFoodElement } from "@/models";
-import { map } from "lodash";
+import { isArray, map, size } from "lodash";
 import Spinner from "@/components/Spinner";
 import FastFoodItem from "@/components/FastFoodItem";
 import NotFound from "@/assets/images/404.png";
-
-const createFastFoot = (fastFood: FastFoodElement) => {
-  return <FastFoodItem key={fastFood.id} {...fastFood} />
+const createFastFoot = (fastFood: FastFoodElement, loadDelay:number) => {
+  return <FastFoodItem key={fastFood.id} {...fastFood} delay={loadDelay} />
 }
 
 
 
-const renderFastFoodList = (loading: boolean, fastFoodList: FastFoodElement[]) => {
+const renderFastFoodList = (loading: boolean, fastFoodList: FastFoodElement[] | unknown) => {
   if (loading) {
     return <div className="col-span-full flex justify-center min-h-40 items-center"><Spinner /></div>
   }
-  else {
-    if(fastFoodList.length === 0){
-      return <img className="col-start-2 col-end-4 w-full h-96 object-contain" src={NotFound} alt="" />
+  else if(isArray(fastFoodList)) {
+    if(size(fastFoodList) === 0){
+      return <div className="col-start-2 col-end-4">
+        <div className="bg-orange-50 text-orange px-4 py-2 rounded text-center mb-4 animate__animated animate__lightSpeedInRight">برای کلید واژه فوق هیچ آیتمی پیدا نشد.</div>
+        <img className="col-start-2 col-end-4 w-full h-96 object-contain animate__animated animate__zoomIn" src={NotFound} alt="" />
+      </div>
     }
     else{
-      return map(fastFoodList, createFastFoot)
+      let loadDelay:number = 0;
+      return map(fastFoodList, (fastFood: FastFoodElement)=>{
+        loadDelay += 0.3;
+        return createFastFoot(fastFood ,loadDelay)
+      })
     }
   }
 }
 interface Props{
-  fastFoodList: FastFoodElement[];
+  fastFoodList: FastFoodElement[] | unknown;
   loading: boolean
 }
 const CategoryList = ({fastFoodList,loading}:Props) => {

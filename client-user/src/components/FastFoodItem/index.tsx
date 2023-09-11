@@ -2,6 +2,7 @@ import Spinner from "@/components/Spinner";
 import { FastFoodElement } from "@/models";
 import { Icon } from "@iconify/react";
 import { isEmpty } from "lodash";
+import "animate.css";
 
 const renderImage = (
   imageUrl: string,
@@ -24,14 +25,19 @@ const renderImage = (
   
 };
 
+interface Props extends FastFoodElement{
+  delay: number
+}
+
 const FastFoodItem = ({
   imageUrl,
   ingredients,
   name,
   price,
-}: FastFoodElement) => {
+  delay = 0
+}: Props) => {
   return (
-    <div className="shadow rounded-t-3xl rounded-b overflow-hidden flex flex-col">
+    <div className="shadow rounded-t-3xl rounded-b overflow-hidden flex flex-col animate__animated  animate__backInUp" style={{animationDelay: delay + 's'}}>
       <div className="h-60 w-full bg-gray animate-ease animate-duration flex justify-center items-center relative">
         {
         renderImage(imageUrl, price, name)}

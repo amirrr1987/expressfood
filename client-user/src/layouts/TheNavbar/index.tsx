@@ -1,5 +1,5 @@
 import Spinner from "@/components/Spinner";
-import { map } from "lodash";
+import { isArray, map } from "lodash";
 import { CategoryElement } from "@/models";
 import NavbarItem from "./Item";
 
@@ -14,7 +14,7 @@ const createCategory = (
 
 const renderCategories = (
   loading: boolean,
-  categories: CategoryElement[],
+  categories: CategoryElement[] | null,
   filterItems: (categoryId: string) => void
 ) => {
   if (loading) {
@@ -34,17 +34,20 @@ const renderCategories = (
               filterItems("");
             }}
           >
-            همه فست فود‌ها
+            همه
           </a>
         </li>
-        {map(categories, (category) => createCategory(category, filterItems))}
+
+        {isArray(categories)
+          ? map(categories, (category) => createCategory(category, filterItems))
+          : null}
       </>
     );
   }
 };
 
 interface Props {
-  categories: CategoryElement[];
+  categories: CategoryElement[] | null;
   loading: boolean;
   filterItems: (categoryId: string) => void;
   children: React.ReactNode;
@@ -52,8 +55,8 @@ interface Props {
 const TheNavbar = ({ categories, loading, filterItems, children }: Props) => {
   return (
     <nav className="">
-      <div className="container mx-auto px-4 bg-white text-black border shadow rounded h-18 -mt-9 flex items-center justify-between">
-        <ul className="flex gap-x-8 w-full">
+      <div className="container mx-auto px-8 bg-white text-black border shadow rounded h-18 -mt-9 flex items-center justify-between">
+        <ul className="flex gap-x-4 w-full">
           {renderCategories(loading, categories, filterItems)}
         </ul>
         {children}
