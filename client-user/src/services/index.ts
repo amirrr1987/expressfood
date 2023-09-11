@@ -26,7 +26,7 @@ export const useServices = (params: AxiosRequestConfig<unknown>) => {
 
     useEffect(() => {
         fetchData();
-    }, [params.url])
+    }, [params.url, params.page])
 
     return [response, error, loading] as const;
 };
