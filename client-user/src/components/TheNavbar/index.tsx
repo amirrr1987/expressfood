@@ -1,4 +1,4 @@
-import Spinner from "@/Spinner";
+import Spinner from "@/components/Spinner";
 import { map } from "lodash";
 import { CategoryElement } from "@/models";
 import NavbarItem from "./Item";

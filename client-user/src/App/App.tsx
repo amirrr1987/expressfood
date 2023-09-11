@@ -1,12 +1,12 @@
 import "./App.css";
-import TheHeader from "@/TheHeader";
-import FastFoodList from "@/FastFoodList";
-import TheNavbar from "@/TheNavbar";
+import TheHeader from "@/layouts/TheHeader";
+import FastFoodList from "@/pages/FastFoodList";
+import TheNavbar from "@/components/TheNavbar";
 import { useEffect, useState } from "react";
 import { CategoryElement, FastFoodElement } from "@/models";
 import services from "@/services";
-import SearchBar from "@/SearchBar";
-import TheFooter from "@/TheFooter";
+import SearchBar from "@/components/SearchBar";
+import TheFooter from "@/layouts/TheFooter";
 
 function App() {
   

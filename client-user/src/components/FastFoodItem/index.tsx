@@ -1,16 +1,17 @@
-import Spinner from "@/Spinner";
+import Spinner from "@/components/Spinner";
 import { FastFoodElement } from "@/models";
 import { Icon } from "@iconify/react";
+import { isEmpty } from "lodash";
 
 const renderImage = (
   imageUrl: string,
   price: number,
   name: string
 ) => {
-  if (!imageUrl) {
+  if (isEmpty(imageUrl)) {
     return <Spinner />;
   }
-  if (imageUrl) {
+  if (!isEmpty(imageUrl)) {
     return (
       <>
         <img className="w-full h-60 object-cover" src={imageUrl} title={name} alt={name} />

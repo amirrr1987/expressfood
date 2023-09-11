@@ -1,7 +1,7 @@
 import { FastFoodElement } from "@/models";
 import { map } from "lodash";
-import Spinner from "@/Spinner";
-import FastFoodItem from "@/FastFoodItem";
+import Spinner from "@/components/Spinner";
+import FastFoodItem from "@/components/FastFoodItem";
 import NotFound from "@/assets/images/404.png";
 
 const createFastFoot = (fastFood: FastFoodElement) => {
