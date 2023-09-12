@@ -1,6 +1,8 @@
-import  "./index.less";
+import { useThemeContext } from "@/stores/app.context";
+import  "./TheFooter.less";
 const TheFooter = ()=>{
-    return <footer className="pb-12 pt-120">
+    const theme = useThemeContext()
+    return <footer className={`${theme.darkMode ? 'bg-black': 'bg-white'} pb-12 pt-120`}>
         <div className="container mx-auto px-4 grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
             <div className="">
                 <h4>title</h4>

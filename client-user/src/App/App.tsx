@@ -1,24 +1,20 @@
 import "./App.css";
 import TheHeader from "@/layouts/TheHeader";
-import FastFoodList from "@/pages/FastFoodList";
 import TheNavbar from "@/layouts/TheNavbar";
+import FastFoodList from "@/pages/FastFoodList";
+import TheFooter from "@/layouts/TheFooter";
+import SearchBar from "@/components/SearchBar";
 import { useState } from "react";
 import { useServices } from "@/services";
-import SearchBar from "@/components/SearchBar";
-import TheFooter from "@/layouts/TheFooter";
-import { size } from "lodash";
+import { chunk, map } from "lodash";
+import { FastFoodElement } from "@/models";
 
 const App: React.FC = () => {
-  const [pageSize, setPageSize] = useState(1);
-  const [page, setPage] = useState(1);
-
   const [url, setUrl] = useState<string>("/FastFood/list");
 
   const [fastFoodList, , loadingFastFood] = useServices({
     method: "GET",
     url: url,
-    page: page,
-    pageSize: pageSize,
   });
 
   const [categories, , loadingCategories] = useServices({
@@ -34,6 +30,28 @@ const App: React.FC = () => {
     setUrl(`/FastFood/list/${categoryId ? "?categoryId=" + categoryId : ""}`);
   };
 
+  const [totalInPage, setTotalInPage] = useState(4);
+  const [page, setPage] = useState(1);
+  const chunkedFastFoodList = chunk(fastFoodList, totalInPage);
+
+
+  const createBtn = (_item: FastFoodElement, index: number) => (
+    <button
+      key={index}
+      type="button"
+      className="border w-8 h-8 rounded"
+      value={index + 1}
+      onClick={() => setPage(index)}
+    >
+      {index + 1}
+    </button>
+  );
+
+  const onChange = (e)=>{
+    setTotalInPage(e.target.value)
+    setPage(0)
+  }
+
   return (
     <>
       <TheHeader />
@@ -45,26 +63,27 @@ const App: React.FC = () => {
         <SearchBar searchItems={searchItems} />
       </TheNavbar>
       <FastFoodList
-        fastFoodList={fastFoodList}
+        fastFoodList={chunkedFastFoodList[page]}
         loading={loadingFastFood}
-        page={page}
-        pageSize={pageSize}
       >
-        <input
-          type="number"
-          className="border"
-          min={1}
-          max={size(fastFoodList)}
-          value={page}
-          onInput={(event) => setPage(event.target.value)}
-        />
-        <select onChange={(event)=> setPageSize(event.target.value)}>
-          <option value={1}>1</option>
-          <option value={2}>2</option>
-          <option value={3}>3</option>
-          <option value={4}>4</option>
-          <option value={5}>5</option>
-        </select>
+        <div className="flex gap-x-8">
+          {/* <input
+            type="number"
+            min={1}
+            max={fastFoodList?.length ?? 2 -1}
+            className="border"
+            value={totalInPage}
+            onInput={(e) => setTotalInPage(e.target.value)}
+          /> */}
+          <select onChange={onChange}>
+            <option value={4}>4</option>
+            <option value={8}>8</option>
+            <option value={16}>16</option>
+          </select>
+          <div className="flex gap-4">
+            {map(chunkedFastFoodList, createBtn)}
+          </div>
+        </div>
       </FastFoodList>
       <TheFooter />
     </>

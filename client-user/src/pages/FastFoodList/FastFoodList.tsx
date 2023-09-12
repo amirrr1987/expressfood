@@ -1,9 +1,9 @@
 import { FastFoodElement } from "@/models";
-import { chunk, isArray, map, size } from "lodash";
+import { isArray, map, size } from "lodash";
 import Spinner from "@/components/Spinner";
 import FastFoodItem from "@/components/FastFoodItem";
 import NotFound from "@/assets/images/404.png";
-import { useState } from "react";
+import { useThemeContext } from "@/stores/app.context";
 const createFastFoot = (fastFood: FastFoodElement, loadDelay: number) => {
   return <FastFoodItem key={fastFood.id} {...fastFood} delay={loadDelay} />;
 };
@@ -11,8 +11,6 @@ const createFastFoot = (fastFood: FastFoodElement, loadDelay: number) => {
 const renderFastFoodList = (
   loading: boolean,
   fastFoodList: FastFoodElement[] | unknown,
-  pageSize: number,
-  page: number
 ) => {
   if (loading) {
     return (
@@ -36,8 +34,7 @@ const renderFastFoodList = (
       );
     } else {
       let loadDelay: number = 0;
-      const temp = chunk(fastFoodList, pageSize);
-      return map(temp[page], (fastFood: FastFoodElement) => {
+      return map(fastFoodList, (fastFood: FastFoodElement) => {
         loadDelay += 0.3;
         return createFastFoot(fastFood, loadDelay);
       });
@@ -47,24 +44,23 @@ const renderFastFoodList = (
 interface Props {
   fastFoodList: FastFoodElement[] | unknown;
   loading: boolean;
-  page: number;
-  pageSize: number;
   children: React.ReactNode;
 }
 const CategoryList = ({
   fastFoodList,
   loading,
-  page,
-  pageSize,
   children,
 }: Props) => {
+
+  const theme = useThemeContext()
+  
   return (
     <main>
-      <section className="py-12">
-        <div className="container mx-auto px-4">{children}</div>
+      <section className={`${theme.darkMode ? 'bg-black': 'bg-white'} py-12`}>
         <div className="container mx-auto px-4 grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 p-8">
-          {renderFastFoodList(loading, fastFoodList, pageSize, page)}
+          {renderFastFoodList(loading, fastFoodList)}
         </div>
+        <div className="container mx-auto px-4">{children}</div>
       </section>
     </main>
   );

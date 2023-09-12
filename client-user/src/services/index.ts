@@ -1,3 +1,4 @@
+import { CategoryElement, FastFoodElement } from "@/models";
 import axios, { AxiosRequestConfig } from "axios";
 import { useEffect, useState } from "react";
 
@@ -10,7 +11,7 @@ const instance = axios.create({
 export const useServices = (params: AxiosRequestConfig<unknown>) => {
     const [loading, setLoading] = useState<boolean>(false);
     const [error, setError] = useState<string>('');
-    const [response, setResponse] = useState<never | null>(null);
+    const [response, setResponse] = useState< FastFoodElement[] | CategoryElement[] | null>(null);
 
     const fetchData = async () => {
         try {
@@ -26,7 +27,7 @@ export const useServices = (params: AxiosRequestConfig<unknown>) => {
 
     useEffect(() => {
         fetchData();
-    }, [params.url, params.page])
+    }, [params.url])
 
     return [response, error, loading] as const;
 };

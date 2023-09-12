@@ -3,6 +3,7 @@ import { FastFoodElement } from "@/models";
 import { Icon } from "@iconify/react";
 import { isEmpty } from "lodash";
 import "animate.css";
+import { useThemeContext } from "@/stores/app.context";
 
 const renderImage = (
   imageUrl: string,
@@ -36,19 +37,21 @@ const FastFoodItem = ({
   price,
   delay = 0
 }: Props) => {
+
+  const theme = useThemeContext()
   return (
-    <div className="shadow rounded-t-3xl rounded-b overflow-hidden flex flex-col animate__animated  animate__backInUp" style={{animationDelay: delay + 's'}}>
+    <div className={`${theme.darkMode ? 'bg-dark': 'bg-white'} shadow rounded-t-3xl rounded-b overflow-hidden flex flex-col animate__animated  animate__backInUp`} style={{animationDelay: delay + 's'}}>
       <div className="h-60 w-full bg-gray animate-ease animate-duration flex justify-center items-center relative">
         {
         renderImage(imageUrl, price, name)}
       </div>
 
       <div className="p-4 flex flex-col flex-1">
-        <h4 className="text-center text-xl mb-2 font-medium text-green-700">{name}</h4>
-        <p className="text-xs text-gray-400 text-center mb-4  flex-1">
+        <h4 className={`${theme.darkMode ? 'text-green-400': 'text-green-700'} text-center text-xl mb-2 font-medium `}>{name}</h4>
+        <p className={`${theme.darkMode ? 'text-white': 'text-gray-400'} text-xs  text-center mb-4 flex-1`}>
           {ingredients}
         </p>
-        <button className="border border-green w-full rounded py-1.7 text-xs duration-400 text-green-600 hover:bg-green hover:text-white active:bg-green-300 flex items-center justify-center gap-x-2">
+        <button className={`${theme.darkMode ? 'bg-green text-green-900': 'bg-white text-green-600'} border border-green w-full rounded py-1.7 text-xs duration-400  hover:bg-green hover:text-white active:bg-green-300 flex items-center justify-center gap-x-2`}>
           <Icon icon="tabler:shopping-cart" width={18} />
           افزودن به سبد خرید
         </button>

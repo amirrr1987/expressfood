@@ -1,4 +1,4 @@
-import "./header.css";
+import "./TheHeader.css";
 const TheHeader : React.FC = () => {
   return (
     <header className="h-70 bg flex items-center">
