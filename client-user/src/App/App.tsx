@@ -67,14 +67,6 @@ const App: React.FC = () => {
         loading={loadingFastFood}
       >
         <div className="flex gap-x-8">
-          {/* <input
-            type="number"
-            min={1}
-            max={fastFoodList?.length ?? 2 -1}
-            className="border"
-            value={totalInPage}
-            onInput={(e) => setTotalInPage(e.target.value)}
-          /> */}
           <select onChange={onChange}>
             <option value={4}>4</option>
             <option value={8}>8</option>
