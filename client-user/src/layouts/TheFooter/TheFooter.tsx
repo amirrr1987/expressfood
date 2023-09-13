@@ -2,8 +2,8 @@ import { useThemeContext } from "@/stores/app.context";
 import  "./TheFooter.less";
 const TheFooter = ()=>{
     const theme = useThemeContext()
-    return <footer className={`${theme.darkMode ? 'bg-black': 'bg-white'} pb-12 pt-120`}>
-        <div className="container mx-auto px-4 grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+    return <footer className={`footer ${theme.darkMode ? 'bg-black': 'bg-white'}`}>
+        <div className="footer__container">
             <div className="">
                 <h4>title</h4>
                 <p>

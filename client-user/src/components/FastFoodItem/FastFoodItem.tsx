@@ -4,6 +4,7 @@ import { Icon } from "@iconify/react";
 import { isEmpty } from "lodash";
 import "animate.css";
 import { useThemeContext } from "@/stores/app.context";
+import  "./FastFoodItem.less";
 
 const renderImage = (
   imageUrl: string,
@@ -40,18 +41,18 @@ const FastFoodItem = ({
 
   const theme = useThemeContext()
   return (
-    <div className={`${theme.darkMode ? 'bg-dark': 'bg-white'} shadow rounded-t-3xl rounded-b overflow-hidden flex flex-col animate__animated  animate__backInUp`} style={{animationDelay: delay + 's'}}>
-      <div className="h-60 w-full bg-gray animate-ease animate-duration flex justify-center items-center relative">
+    <div className={`card ${theme.darkMode ? 'bg-dark': 'bg-white'}`} style={{animationDelay: delay + 's'}}>
+      <div className="card__image-box">
         {
         renderImage(imageUrl, price, name)}
       </div>
 
-      <div className="p-4 flex flex-col flex-1">
-        <h4 className={`${theme.darkMode ? 'text-green-400': 'text-green-700'} text-center text-xl mb-2 font-medium `}>{name}</h4>
-        <p className={`${theme.darkMode ? 'text-white': 'text-gray-400'} text-xs  text-center mb-4 flex-1`}>
+      <div className="card__body">
+        <h4 className={`card__title ${theme.darkMode ? 'text-green-400': 'text-green-700'}`}>{name}</h4>
+        <p className={`${theme.darkMode ? 'text-white': 'text-gray-400'} card__caption`}>
           {ingredients}
         </p>
-        <button className={`${theme.darkMode ? 'bg-green text-green-900': 'bg-white text-green-600'} border border-green w-full rounded py-1.7 text-xs duration-400  hover:bg-green hover:text-white active:bg-green-300 flex items-center justify-center gap-x-2`}>
+        <button className={`card__btn ${theme.darkMode ? 'bg-green text-green-900': 'bg-white text-green-600'}`}>
           <Icon icon="tabler:shopping-cart" width={18} />
           افزودن به سبد خرید
         </button>

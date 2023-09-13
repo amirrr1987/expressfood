@@ -1,0 +1,18 @@
+.card{
+    @apply  shadow rounded-t-3xl rounded-b overflow-hidden flex flex-col animate__animated  animate__backInUp;
+    &__image-box{
+        @apply h-60 w-full bg-gray animate-ease animate-duration flex justify-center items-center relative;
+    }
+    &__body{
+        @apply p-4 flex flex-col flex-1;
+    }
+    &__title{
+        @apply text-center text-xl mb-2 font-medium;
+    }
+    &__btn{
+        @apply  border border-green w-full rounded py-1.7 text-xs duration-400  hover:bg-green hover:text-white active:bg-green-300 flex items-center justify-center gap-x-2;
+    }
+    &__caption{
+        @apply text-xs  text-center mb-4 flex-1;
+    }
+}

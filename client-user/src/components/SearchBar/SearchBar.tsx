@@ -1,7 +1,7 @@
 import { Icon } from "@iconify/react";
 import { useState } from "react";
 import "animate.css";
-import "./index.style.less";
+import "./SearchBar.less";
 
 interface Props {
   searchItems: (value: string) => void;
@@ -9,11 +9,11 @@ interface Props {
 
 const SearchBar = ({ searchItems }: Props) => {
   const [value, setValue] = useState("");
-  const onSubmit = (event: { preventDefault: () => void }) => {
+  const onSubmit = (event: { preventDefault: () => void; }) => {
     event.preventDefault();
     searchItems(value);
   };
-  const onInput = (event) => setValue(event.target.value);
+  const onInput = (event ) => setValue(event.target.value);
   return (
     <form className="search-bar" onSubmit={onSubmit}>
       <Icon className="search-bar__icon" icon="tabler:search" />
